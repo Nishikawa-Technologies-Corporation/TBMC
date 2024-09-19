@@ -44,3 +44,7 @@ body:
         3. Observe Z result
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: |
+      # **If there is a screenshot or video, please place it here to better explain the problem.**
