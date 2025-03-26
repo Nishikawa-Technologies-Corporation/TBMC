@@ -160,13 +160,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/security/brig)
-"aA" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	dir = 4
-	},
-/obj/structure/cable,
-/turf/open/floor/circuit/green/telecomms/mainframe,
-/area/station/tcommsat/server)
 "aB" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -905,8 +898,6 @@
 /area/station/maintenance/solars/starboard/fore)
 "dH" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/obj/machinery/power/smes/full,
 /turf/open/floor/iron/dark,
 /area/station/tcommsat/server)
 "dI" = (
@@ -3058,12 +3049,9 @@
 /turf/open/floor/iron,
 /area/station/command/teleporter)
 "mR" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/power/terminal{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
 /obj/structure/cable,
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/circuit/green/telecomms/mainframe,
 /area/station/tcommsat/server)
 "mS" = (
 /obj/machinery/door/airlock/external{
@@ -4922,7 +4910,6 @@
 	name = "telecomms camera";
 	network = list("ss13","tcomms")
 	},
-/obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/tcommsat/server)
@@ -7043,6 +7030,10 @@
 	},
 /turf/open/floor/wood,
 /area/station/commons/dorms/barracks)
+"CE" = (
+/obj/machinery/drone_dispenser/preloaded,
+/turf/open/floor/plating,
+/area/station/maintenance/central)
 "CF" = (
 /obj/machinery/telecomms/broadcaster/preset_left,
 /turf/open/floor/circuit/telecomms/mainframe,
@@ -7160,7 +7151,6 @@
 /area/station/engineering/atmos)
 "Df" = (
 /obj/machinery/telecomms/receiver/preset_right,
-/obj/structure/cable,
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/station/tcommsat/server)
 "Dg" = (
@@ -8064,10 +8054,7 @@
 /area/station/maintenance/disposal/incinerator)
 "GT" = (
 /obj/structure/cable,
-/obj/machinery/power/solar_control/preconnected{
-	name = "Starboard Bow Solar Control";
-	id = "forestarboard"
-	},
+/obj/machinery/power/solar_control,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/starboard/fore)
 "GX" = (
@@ -33824,7 +33811,7 @@ Br
 Br
 Tm
 Br
-Br
+CE
 Ws
 nv
 nv
@@ -36853,12 +36840,12 @@ nv
 nv
 WS
 bC
-LG
-LG
-LG
+aD
+aD
+aD
 tw
 ls
-aD
+LG
 aD
 aD
 aD
@@ -37110,12 +37097,12 @@ nv
 nv
 WS
 WS
+ym
+ym
+ym
+ym
+ym
 CQ
-ym
-ym
-ym
-ym
-ym
 ym
 ym
 aD
@@ -37367,12 +37354,12 @@ nv
 nv
 nv
 lT
-CQ
+ym
 Ef
 kS
 aD
 CF
-aD
+LG
 Zt
 Dw
 VS
@@ -37624,12 +37611,12 @@ nv
 nv
 nv
 YM
-CQ
+ym
 eQ
 cx
 aD
 aD
-aD
+LG
 dX
 zb
 aD
@@ -37886,7 +37873,7 @@ aD
 aD
 UA
 Dm
-Ii
+mR
 Ii
 Ii
 Ii
@@ -38138,13 +38125,13 @@ nv
 nv
 nv
 YM
-LG
+aD
 aD
 aD
 vt
 aD
-aD
-aD
+LG
+LG
 YM
 YM
 YM
@@ -38396,7 +38383,7 @@ nv
 nv
 DJ
 dH
-mR
+aD
 aD
 WI
 FO
@@ -38653,12 +38640,12 @@ nv
 nv
 YM
 aD
-LG
-LG
-aA
-LG
-LG
-wh
+aD
+aD
+vt
+aD
+aD
+aD
 YM
 YM
 YM
