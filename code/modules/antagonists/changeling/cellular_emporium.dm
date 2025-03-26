@@ -35,6 +35,9 @@
 	if(isnull(abilities))
 		abilities = list()
 		for(var/datum/action/changeling/ability_path as anything in changeling.all_powers)
+			// Bluemoon edit - Changeling quirk
+			if(istype(changeling, /datum/antagonist/changeling/quirk) && initial(ability_path.hide_from_quirk_changeling))
+				continue
 
 			var/dna_cost = initial(ability_path.dna_cost)
 
