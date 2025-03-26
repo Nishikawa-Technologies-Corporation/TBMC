@@ -8933,6 +8933,7 @@
 #include "modular_nova\modules_bluemoon\beacon_sfx\code\spaceship_navigation_beacon.dm"
 #include "modular_nova\modules_bluemoon\cargo\expressconsole.dm"
 #include "modular_nova\modules_bluemoon\breathless_quirk\breathless.dm"
+#include "modular_nova\modules_bluemoon\changeling_quirk\datums\actions\changeling.dm"
 #include "modular_nova\modules_bluemoon\changeling_quirk\datums\antagonist\changeling.dm"
 #include "modular_nova\modules_bluemoon\changeling_quirk\datums\quirks\changeling.dm"
 #include "modular_nova\modules_bluemoon\client\client_procs.dm"
