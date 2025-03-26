@@ -26,6 +26,7 @@
 /datum/emote/twerk
 	key = "twerk"
 	key_third_person = "twerks"
+	message = "twerks their butt around!"
 	hands_use_check = TRUE
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer, /mob/eye/imaginary_friend)
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer, /mob/living/silicon/ai, /mob/eye/imaginary_friend)
