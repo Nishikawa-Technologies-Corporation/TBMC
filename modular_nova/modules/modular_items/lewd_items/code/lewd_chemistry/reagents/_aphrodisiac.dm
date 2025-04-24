@@ -61,7 +61,7 @@
 	var/balls_enormous_size_threshold = PENIS_MAX_LENGTH - 4
 
 	/// Largest size the chem can make a mob's breasts
-	var/max_breast_size = 18 //BLUEMOON EDIT: HYPER BREASTS
+	var/max_breast_size = 22
 	/// How much breasts are increased in size each time it's run
 	var/breast_size_increase_step = 1
 	/// Smallest size the chem can make a mob's breasts
