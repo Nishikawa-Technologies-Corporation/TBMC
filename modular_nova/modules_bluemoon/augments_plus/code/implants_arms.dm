@@ -24,6 +24,9 @@
 	name = "Right Advanced Engineering Toolset Implant"
 	path = /obj/item/organ/cyberimp/arm/toolset
 
+/obj/item/organ/cyberimp/arm/toolset/l
+	zone = BODY_ZONE_L_ARM
+
 /datum/augment_item/implant/l_arm/toolset_adv
 	name = "Left Advanced Engineering Toolset Implant"
 	path = /obj/item/organ/cyberimp/arm/toolset/l
@@ -43,6 +46,9 @@
 	name = "Right Arm-Mounted Laser Gun Implant"
 	path = /obj/item/organ/cyberimp/arm/gun/laser
 
+/obj/item/organ/cyberimp/arm/gun/laser/l
+	zone = BODY_ZONE_L_ARM
+
 /datum/augment_item/implant/l_arm/lasergun
 	name = "Left Arm-Mounted Laser Gun Implant"
 	path = /obj/item/organ/cyberimp/arm/gun/laser/l
@@ -50,6 +56,9 @@
 /datum/augment_item/implant/r_arm/taser
 	name = "Right Arm-Mounted Taser Implant"
 	path = /obj/item/organ/cyberimp/arm/gun/taser
+
+/obj/item/organ/cyberimp/arm/gun/taser/l
+	zone = BODY_ZONE_L_ARM
 
 /datum/augment_item/implant/l_arm/taser
 	name = "Left Arm-Mounted Taser Implant"

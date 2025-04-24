@@ -173,7 +173,6 @@
 	if(!length(GLOB.cyborg_model_list))
 		GLOB.cyborg_model_list = list(
 			// Bluemoon edit - Extra cyborg models
-			"Standard" = /obj/item/robot_model/standard,
 			"Syndicate" = /obj/item/robot_model/syndicatejack,
 			"Syndicate Assault" = /obj/item/robot_model/syndicate,
 			"Syndicate Medical" = /obj/item/robot_model/syndicate_medical,
