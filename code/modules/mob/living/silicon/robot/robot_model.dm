@@ -242,7 +242,9 @@
 	cyborg.model = new_model
 	cyborg.update_module_innate()
 	new_model.rebuild_modules()
-	cyborg.radio.recalculateChannels()
+	// Bluemoon edit - Fix cyborg module transform
+	if(cyborg.radio)
+		cyborg.radio.recalculateChannels()
 	cyborg.set_modularInterface_theme()
 	cyborg.diag_hud_set_health()
 	cyborg.diag_hud_set_status()
