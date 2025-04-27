@@ -26,11 +26,11 @@
 
 // Lets cyborgs pick stuff up, and outlines stuff that isn't in their model's kit for easier identification.
 // Anything they pick up can be used like normal. Retains all of its functionality. ALL of it. Balance nightmare? Yes
-
-/mob/living/silicon/put_in_hand_check()
+/*
+/mob/living/silicon/put_in_hand_check(obj/item/I)
 	return TRUE // unbelievable, stupendous, excellent, a paragon of coding prowess
 
-/mob/living/silicon/robot/select_module()
+/mob/living/silicon/robot/select_module(module_num)
 	..()
 
 	var/mod_index = get_selected_module()
@@ -67,3 +67,4 @@
 
 /mob/living/silicon/robot/can_hold_items(obj/item/I)
 	return ..()
+*/
