@@ -63,7 +63,7 @@
 			// Bluemoon edit - Cyborg gender
 			. += span_deadsay("[p_They()] look[p_s()] like [p_their()] system is corrupted and requires a reset.")
 	//NOVA EDIT ADDITION BEGIN - CUSTOMIZATION
-	. += get_silicon_flavortext()
+	. += get_silicon_flavortext(user)
 	//NOVA EDIT ADDITION END
 
 	. += ..()
