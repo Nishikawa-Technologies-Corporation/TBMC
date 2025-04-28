@@ -3,8 +3,11 @@
 	output_level = 90 KILO WATTS
 
 /obj/machinery/power/smes/super/full/marinastation
-	input_level = 200 KILO WATTS
-	output_level = 200 KILO WATTS
+	input_level = 600 KILO WATTS
+	output_level = 600 KILO WATTS
+	input_level_max = 600 KILO WATTS
+	output_level_max = 600 KILO WATTS
+
 
 /obj/machinery/computer/shuttle/shipstation
 	name = "NTSS 'Blue Moon' Shuttle Console"
