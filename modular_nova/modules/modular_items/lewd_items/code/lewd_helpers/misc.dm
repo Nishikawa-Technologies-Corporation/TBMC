@@ -32,4 +32,4 @@
 	// Bluemoon edit - Add reagents to cum decals
 	var/atom/stain = new selected_type(the_turf, get_static_viruses(), amount)
 
-	stain.transfer_mob_blood_dna(src) //I'm not adding a new forensics category for cumstains
+	stain.add_mob_blood(src) //I'm not adding a new forensics category for cumstains
