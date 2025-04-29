@@ -6,7 +6,8 @@
 	static_lighting = FALSE
 	base_lighting_alpha = 255
 	base_lighting_color = "#FFFFCC"
-	requires_power = FALSE
+	requires_power = TRUE
+	outdoors = TRUE
 	default_gravity = STANDARD_GRAVITY
 	ambient_buzz = 'modular_nova/modules_bluemoon/awaymissions/forest/sound/ambience_forest.ogg'
 	forced_ambience = TRUE
