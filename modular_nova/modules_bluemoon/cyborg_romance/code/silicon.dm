@@ -21,10 +21,6 @@
 
 	var/refractory_period
 
-	var/datum/cyborg_organ_descriptor/genitals
-
-///Cyborg genital simulant
-/datum/cyborg_organ_descriptor
 	var/organs_type = CYBORG_ORGAN_BOTH
 	var/vagina_visibility = CYBORG_ORGAN_HIDDEN
 	var/penis_visibility = CYBORG_ORGAN_HIDDEN
@@ -35,8 +31,6 @@
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		verbs -= /mob/living/silicon/robot/verb/climax_verb
 		verbs -= /mob/living/silicon/robot/verb/toggle_genitals
-	else
-		genitals = new /datum/cyborg_organ_descriptor
 
 /mob/living/silicon/robot/Life(seconds_per_tick, times_fired)
 	. = ..()
@@ -49,9 +43,6 @@
 	if(!player_client.prefs?.read_preference(/datum/preference/toggle/erp) || CONFIG_GET(flag/disable_erp_preferences))
 		return
 
-	if(!genitals)
-		genitals = new /datum/cyborg_organ_descriptor
-
 	var/pref_sex = player_client.prefs.read_preference(/datum/preference/choiced/sex_cyborg)
 	// Default option simply mirrors main genital prefs of the character
 	if(pref_sex == "Default")
@@ -59,13 +50,13 @@
 		var/has_vagina_pref = player_client.prefs.read_preference(/datum/preference/choiced/genital/vagina)
 		if(has_penis_pref)
 			if(has_vagina_pref)
-				genitals.organs_type = CYBORG_ORGAN_BOTH
+				organs_type = CYBORG_ORGAN_BOTH
 			else
-				genitals.organs_type = CYBORG_ORGAN_PENIS
+				organs_type = CYBORG_ORGAN_PENIS
 		else if(has_vagina_pref)
-			genitals.organs_type = CYBORG_ORGAN_VAGINA
+			organs_type = CYBORG_ORGAN_VAGINA
 	else
-		genitals.organs_type = pref_sex
+		organs_type = pref_sex
 
 /mob/living/silicon/robot/verb/toggle_genitals()
 	set category = "IC"
@@ -76,7 +67,7 @@
 		to_chat(usr, span_warning("You can't toggle genitals visibility right now..."))
 		return
 
-	if(!genitals || genitals.organs_type == CYBORG_ORGAN_NONE) //There is nothing to expose
+	if(organs_type == CYBORG_ORGAN_NONE) //There is nothing to expose
 		return
 
 	var/list/genital_list = list()
@@ -104,50 +95,50 @@
 		return
 
 	if((picked_organ == CYBORG_ORGAN_BOTH) || (picked_organ == CYBORG_ORGAN_PENIS))
-		genitals.penis_visibility = cyborg_gen_vis_trans[picked_visibility]
+		penis_visibility = cyborg_gen_vis_trans[picked_visibility]
 	if((picked_organ == CYBORG_ORGAN_BOTH) || (picked_organ == CYBORG_ORGAN_VAGINA))
-		genitals.vagina_visibility = cyborg_gen_vis_trans[picked_visibility]
+		vagina_visibility = cyborg_gen_vis_trans[picked_visibility]
 
 	balloon_alert(src, "set to [lowertext(picked_visibility)]")
 
 /// Returns true if the cyborg has an accessible penis for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/silicon/robot/proc/has_penis(required_state = REQUIRE_GENITAL_ANY)
-	if(!genitals || ((genitals.organs_type != CYBORG_ORGAN_PENIS) && (genitals.organs_type != CYBORG_ORGAN_BOTH)))
+	if((organs_type != CYBORG_ORGAN_PENIS) && (organs_type != CYBORG_ORGAN_BOTH))
 		return FALSE
 
 	switch(required_state)
 		if(REQUIRE_GENITAL_ANY)
 			return TRUE
 		if(REQUIRE_GENITAL_EXPOSED)
-			if(genitals.penis_visibility == CYBORG_ORGAN_VISIBLE)
+			if(penis_visibility == CYBORG_ORGAN_VISIBLE)
 				return TRUE
-			if((genitals.penis_visibility == CYBORG_ORGAN_AROUSAL) && (arousal >= AROUSAL_LOW))
+			if((penis_visibility == CYBORG_ORGAN_AROUSAL) && (arousal >= AROUSAL_LOW))
 				return TRUE
 		if(REQUIRE_GENITAL_UNEXPOSED)
-			if(genitals.penis_visibility == CYBORG_ORGAN_HIDDEN)
+			if(penis_visibility == CYBORG_ORGAN_HIDDEN)
 				return TRUE
-			if((genitals.penis_visibility == CYBORG_ORGAN_AROUSAL) && (arousal < AROUSAL_LOW))
+			if((penis_visibility == CYBORG_ORGAN_AROUSAL) && (arousal < AROUSAL_LOW))
 				return TRUE
 		else
 			return TRUE
 
 /// Returns true if the cyborg has an accessible vagina for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/silicon/robot/proc/has_vagina(required_state = REQUIRE_GENITAL_ANY)
-	if(!genitals || ((genitals.organs_type != CYBORG_ORGAN_VAGINA) && (genitals.organs_type != CYBORG_ORGAN_BOTH)))
+	if((organs_type != CYBORG_ORGAN_VAGINA) && (organs_type != CYBORG_ORGAN_BOTH))
 		return FALSE
 
 	switch(required_state)
 		if(REQUIRE_GENITAL_ANY)
 			return TRUE
 		if(REQUIRE_GENITAL_EXPOSED)
-			if(genitals.vagina_visibility == CYBORG_ORGAN_VISIBLE)
+			if(vagina_visibility == CYBORG_ORGAN_VISIBLE)
 				return TRUE
-			if((genitals.vagina_visibility == CYBORG_ORGAN_AROUSAL) && (arousal >= AROUSAL_LOW))
+			if((vagina_visibility == CYBORG_ORGAN_AROUSAL) && (arousal >= AROUSAL_LOW))
 				return TRUE
 		if(REQUIRE_GENITAL_UNEXPOSED)
-			if(genitals.vagina_visibility != CYBORG_ORGAN_VISIBLE)
+			if(vagina_visibility != CYBORG_ORGAN_VISIBLE)
 				return TRUE
-			if((genitals.vagina_visibility == CYBORG_ORGAN_AROUSAL) && (arousal < AROUSAL_LOW))
+			if((vagina_visibility == CYBORG_ORGAN_AROUSAL) && (arousal < AROUSAL_LOW))
 				return TRUE
 		else
 			return TRUE
@@ -238,5 +229,6 @@
 #undef AROUSED_HIGH
 #undef AROUSED_MAX
 
+#undef CYBORG_ORGAN_AROUSAL
 #undef CYBORG_ORGAN_HIDDEN
 #undef CYBORG_ORGAN_VISIBLE
