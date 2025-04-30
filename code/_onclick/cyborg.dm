@@ -52,11 +52,11 @@
 		if(LAZYACCESS(modifiers, RIGHT_CLICK) && !module_active)
 			var/secondary_result = A.attack_robot_secondary(src, modifiers)
 			if(secondary_result == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN || secondary_result == SECONDARY_ATTACK_CONTINUE_CHAIN)
-				A.attack_robot(src, modifiers)
 				return
 			if (secondary_result != SECONDARY_ATTACK_CALL_NORMAL)
 				CRASH("attack_robot_secondary did not return a SECONDARY_ATTACK_* define.")
 
+		A.attack_robot(src, modifiers)
 		return
 
 	if(W)

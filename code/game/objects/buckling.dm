@@ -31,10 +31,7 @@
 				return TRUE
 
 //literally just the above extension of attack_hand(), but for silicons instead (with an adjacency check, since attack_robot() being called doesn't mean that you're adjacent to something)
-// Bluemoon edit - Cyborg hands
-/atom/movable/attack_robot(mob/living/user, list/modifiers)
-	if(isnull(modifiers))
-		modifiers = list()
+/atom/movable/attack_robot(mob/living/user)
 	. = ..()
 	if(.)
 		return

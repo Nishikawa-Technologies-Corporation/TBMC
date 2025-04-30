@@ -3,7 +3,6 @@
 
 // Lets cyborgs pick stuff up, and outlines stuff that isn't in their model's kit for easier identification.
 // Anything they pick up can be used like normal. Retains all of its functionality. ALL of it. Balance nightmare? Yes
-
 /obj/item/attack_ai(mob/user)
 	if(Adjacent(user, src) && !istype(src.loc, /obj/item/robot_model) && iscyborg(user)) // it's not one of our modules, and we're 100% sure we're a cyborg
 		var/mob/living/silicon/robot/robor = user
