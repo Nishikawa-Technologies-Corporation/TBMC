@@ -34,7 +34,7 @@ export const bimbofication_pref: FeatureToggle = {
   name: 'Bimbofication',
   category: 'ERP',
   description:
-'Toggles if you are able to react to the effects of bimbofication.',
+    'Toggles if you are able to react to the effects of bimbofication.',
   component: CheckboxInput,
 };
 
@@ -153,5 +153,12 @@ export const sizeplay_pref: FeatureToggle = {
   name: 'Sizeplay',
   category: 'ERP',
   description: 'Toggles whether your height can be changed by chems.',
+  component: CheckboxInput,
+};
+
+export const musk_pref: FeatureToggle = {
+  name: 'Musk',
+  category: 'ERP',
+  description: 'Toggles whether you can use or be affected by musk.',
   component: CheckboxInput,
 };
