@@ -8,7 +8,7 @@
 			apply_status_effect(/datum/status_effect/musk/moderate)
 		else
 			apply_status_effect(/datum/status_effect/musk)
-		to_chat(src, span_notice("You feel a [musk_intensity ? "strongly" : ""] musky scent coming from yourself..."))
+		to_chat(src, span_notice("You feel a[musk_intensity ? " strong" : ""] musky scent coming from yourself..."))
 		return
 
 	to_chat(src, span_notice("Your musky scent subsides..."))
