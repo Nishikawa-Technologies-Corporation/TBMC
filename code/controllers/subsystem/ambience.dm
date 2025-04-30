@@ -53,6 +53,9 @@ SUBSYSTEM_DEF(ambience)
 
 ///Attempts to play an ambient sound to a mob, returning the cooldown in deciseconds
 /area/proc/play_ambience(mob/M, sound/override_sound, volume = 27)
+	// Bluemoon edit - Allow null ambientsounds and ambience_index
+	if(isnull(ambientsounds))
+		return rand(min_ambience_cooldown, max_ambience_cooldown)
 	var/sound/new_sound = override_sound || pick(ambientsounds)
 	/// volume modifier for ambience as set by the player in preferences.
 	var/volume_modifier = (M.client?.prefs.read_preference(/datum/preference/numeric/volume/sound_ambience_volume))/100
