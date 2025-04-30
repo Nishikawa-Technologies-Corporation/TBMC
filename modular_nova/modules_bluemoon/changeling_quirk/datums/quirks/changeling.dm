@@ -3,19 +3,35 @@
 	desc = "You're a member of the Changeling Hive, a species of alien predator that is capable of shapeshifting. You have a stinger and can synthesize deadly chemicals internally. All Changelings are linked together through a hivemind."
 	icon = FA_ICON_SPAGHETTI_MONSTER_FLYING
 	value = 0
-	medical_record_text = "Patient possesses dangerous and alien abilities including a stinger, chemical enhancements, and some form of natural bio-camo!"
+	medical_record_text = ""
+	quirk_flags = QUIRK_HIDE_FROM_SCAN
+	veteran_only = TRUE
 
-/datum/quirk/changeling/add(client/client_source)
+/datum/quirk/changeling/add_unique(client/client_source)
 	var/datum/mind/target_mind = quirk_holder.mind
-	var/datum/antagonist/changeling/quirk/C = target_mind.has_antag_datum(/datum/antagonist/changeling/quirk)
-	if(!C)
-		C = target_mind.add_antag_datum(/datum/antagonist/changeling/quirk)
+	var/datum/antagonist/changeling/quirk/changeling_datum = target_mind.has_antag_datum(/datum/antagonist/changeling/quirk)
+	if(isnull(changeling_datum))
+		changeling_datum = target_mind.add_antag_datum(/datum/antagonist/changeling/quirk)
 		target_mind.special_role = ROLE_CHANGELING
-	return C
 
 /datum/quirk/changeling/remove(client/client_source)
 	var/datum/mind/target_mind = quirk_holder.mind
-	var/datum/antagonist/changeling/quirk/C = quirk_holder?.mind.has_antag_datum(/datum/antagonist/changeling/quirk)
-	if(C)
+	if(isnull(target_mind))
+		return
+	var/datum/antagonist/changeling/quirk/changeling_datum = target_mind.has_antag_datum(/datum/antagonist/changeling/quirk)
+	if(!isnull(changeling_datum))
 		target_mind.remove_antag_datum(/datum/antagonist/changeling/quirk)
 		target_mind.special_role = null
+
+/datum/quirk/changeling/is_species_appropriate(datum/species/mob_species)
+	if (ispath(mob_species, /datum/species/synthetic))
+		return FALSE
+	if (ispath(mob_species, /datum/species/hemophage))
+		return FALSE
+	if (ispath(mob_species, /datum/species/jelly))
+		return FALSE
+	if (ispath(mob_species, /datum/species/plasmaman))
+		return FALSE
+	if (ispath(mob_species, /datum/species/ethereal))
+		return FALSE
+	return ..()
