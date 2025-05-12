@@ -27,10 +27,6 @@
 	if(!iscyborg(spawned))
 		return
 	var/mob/living/silicon/robot/robot_spawn = spawned
-	// Bluemoon edit - Cyborg gender
-	if(player_client)
-		robot_spawn.set_gender(player_client)
-		robot_spawn.set_sex(player_client)
 	robot_spawn.notify_ai(AI_NOTIFICATION_NEW_BORG)
 	// NOVA EDIT ADDITION START
 	var/list/malf_ais = list()
@@ -60,6 +56,8 @@
 	// NOVA EDIT ADDITION END
 	if(player_client)
 		robot_spawn.set_gender(player_client)
+		// Bluemoon edit - Cyborg romance
+		robot_spawn.set_sex(player_client)
 	if(!robot_spawn.connected_ai) // Only log if there's no Master AI
 		robot_spawn.log_current_laws()
 

@@ -74,9 +74,6 @@
 			mmi.brainmob.container = mmi
 			mmi.update_appearance()
 		setup_default_name()
-		// Bluemoon edit - Cyborg gender
-		if(mmi.brainmob)
-			gender = mmi.brainmob.gender
 
 		if(mmi.brainmob)
 			gender = mmi.brainmob.gender
@@ -924,16 +921,14 @@
 /mob/living/silicon/robot/proc/deploy_init(mob/living/silicon/ai/AI)
 	real_name = "[AI.real_name] [designation] Shell-[identifier]"
 	name = real_name
-	// Bluemoon edit - Cyborg gender
-	if(AI.client)
-		set_gender(AI.client)
-		set_sex(AI.client)
 	if(!QDELETED(builtInCamera))
 		builtInCamera.c_tag = real_name //update the camera name too
 	mainframe = AI
 	deployed = TRUE
 	if(AI.client)
 		set_gender(AI.client)
+		// Bluemoon edit - Cyborg romance
+		set_sex(AI.client)
 	set_connected_ai(mainframe)
 	mainframe.connected_robots |= src
 	lawupdate = TRUE

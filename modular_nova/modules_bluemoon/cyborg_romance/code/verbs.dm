@@ -18,7 +18,7 @@
 	else if(has_vagina())
 		genital_list += CYBORG_ORGAN_VAGINA
 
-	var/obj/item/organ/external/genital/picked_organ = tgui_input_list(src, "Choose which genitalia to expose/hide", "Expose/Hide genitals", genital_list)
+	var/picked_organ = tgui_input_list(src, "Choose which genitalia to expose/hide", "Expose/Hide genitals", genital_list)
 
 	if(!picked_organ)
 		return

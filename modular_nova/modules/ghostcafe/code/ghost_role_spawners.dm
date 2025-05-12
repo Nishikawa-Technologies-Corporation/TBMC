@@ -28,8 +28,7 @@
 		new_spawn.updatename(new_spawn.client)
 		new_spawn.transfer_brain_pref(new_spawn.client)
 		new_spawn.transfer_emote_pref(new_spawn.client)
-		// Bluemoon edit - Cyborg gender
-		new_spawn.set_gender(new_spawn.client)
+		// Bluemoon edit - Cyborg romance
 		new_spawn.set_sex(new_spawn.client)
 		// Bluemoon edit - Remove transform action from ghost cafe cyborgs
 		var/datum/action/action_to_remove = locate(/datum/action/cyborg_transform) in new_spawn.actions

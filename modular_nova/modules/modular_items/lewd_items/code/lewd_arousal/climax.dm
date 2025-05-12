@@ -119,12 +119,6 @@
 				if((iterating_container.reagent_flags & OPENCONTAINER) || (iterating_container.reagent_flags & DUNKABLE))
 					fillable_inrange_containers[iterating_container.name] = iterating_container
 
-			// this should be making a list of cups(?)
-			for(var/obj/item/reagent_containers/cup/iterating_open_container in (view(1, src)))
-				if(!iterating_open_container.is_refillable() || !iterating_open_container.is_drainable())
-					continue
-				interactable_inrange_open_containers[iterating_open_container.name] = iterating_open_container
-
 			var/list/buttons = list(CLIMAX_ON_FLOOR)
 
 			// Bluemoon edit - Cyborg interactions
@@ -148,39 +142,6 @@
 				create_cum_decal = TRUE
 				visible_message(span_userlove("[src] shoots [self_their] sticky load onto the floor!"), \
 					span_userlove("You shoot string after string of hot cum, hitting the floor!"), pref_to_check = /datum/preference/toggle/erp)
-
-			else if(penis_climax_choice == CLIMAX_OPEN_CONTAINER)
-				var/target_choice = tgui_input_list(src, "Choose a container to cum into.", "Choose target!", interactable_inrange_open_containers)
-				if(isnull(target_choice))
-					create_cum_decal = TRUE
-					visible_message(span_userlove("[src] shoots [self_their] sticky load onto the floor!"), \
-						span_userlove("You decide to just go for it, and shoot string after string of hot cum, hitting the floor!"), pref_to_check = /datum/preference/toggle/erp)
-				else
-					var/obj/item/reagent_containers/cup/target_open_container = interactable_inrange_open_containers[target_choice]
-					if(target_open_container.is_refillable() && target_open_container.is_drainable())
-						var/obj/item/organ/genital/testicles/src_testicles = src.get_organ_slot(ORGAN_SLOT_TESTICLES)
-						var/load_volume = src_testicles.genital_size * 10
-						playsound_if_pref(get_turf(src), SFX_DESECRATION, 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds)
-						if(target_open_container.reagents.holder_full())
-							// reagent container is full
-							add_cum_splatter_floor(get_turf(target_open_container))
-							visible_message(span_userlove("[src] tries to cum into the [target_open_container], but it's already full, spilling their hot load onto the floor!"), \
-								span_userlove("You try to cum into the [target_open_container], but it's already full, so it all hits the floor instead!"), pref_to_check = /datum/preference/toggle/erp)
-						else
-							target_open_container.reagents.add_reagent(/datum/reagent/consumable/cum, load_volume)
-							if((load_volume + target_open_container.reagents.total_volume) > target_open_container.volume)
-								// the chalice overfloweth
-								add_cum_splatter_floor(get_turf(target_open_container))
-								visible_message(span_userlove("[src] shoots [self_their] sticky load into the [target_open_container], but it's so full that it overflows!"), \
-									span_userlove("You shoot string after string of hot cum into the [target_open_container], making it overflow!"), pref_to_check = /datum/preference/toggle/erp)
-							else
-								visible_message(span_userlove("[src] shoots [self_their] sticky load into the [target_open_container]!"), \
-									span_userlove("You shoot string after string of hot cum into the [target_open_container]!"), pref_to_check = /datum/preference/toggle/erp)
-					else
-						// somehow the reagents changed while we were deciding where to go
-						create_cum_decal = TRUE
-						visible_message(span_userlove("[src] shoots [self_their] sticky load onto the floor!"), \
-							span_userlove("You shoot string after string of hot cum, hitting the floor!"), pref_to_check = /datum/preference/toggle/erp)
 
 			// Bluemoon edit - Climax in containers
 			else if(penis_climax_choice == CLIMAX_IN_CONTAINER)

@@ -11,16 +11,6 @@
 	// Bluemoon edit - Show cyborg inhand sprites
 	AddComponent(/datum/component/basic_inhands)
 
-// Bluemoon edit - Cyborg gender
-/// Sets the cyborg's gender and pronouns from preferences. Expects a client.
-/mob/living/silicon/proc/set_gender(client/player_client)
-	var/pref_gender = player_client.prefs.read_preference(/datum/preference/choiced/gender_cyborg)
-	if(pref_gender == "Default")
-		gender = player_client.prefs.read_preference(/datum/preference/choiced/gender)
-	else
-		gender = pref_gender
-
-
 // SOURCED FROM:
 // 1. https://github.com/LethalStation/NovaSector/pull/53
 

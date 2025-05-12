@@ -9158,7 +9158,6 @@
 #include "modular_nova\modules_bluemoon\cyborg_romance\code\silicon.dm"
 #include "modular_nova\modules_bluemoon\cyborg_romance\code\verbs.dm"
 #include "modular_nova\modules_bluemoon\cyborgs\code\curtains.dm"
-#include "modular_nova\modules_bluemoon\cyborgs\code\cyborg_gender.dm"
 #include "modular_nova\modules_bluemoon\cyborgs\code\cyborg_hand_item.dm"
 #include "modular_nova\modules_bluemoon\cyborgs\code\item.dm"
 #include "modular_nova\modules_bluemoon\cyborgs\code\mod_ai.dm"

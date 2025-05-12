@@ -10,10 +10,10 @@
 	internal_fluid_maximum = size * 20
 
 // Bluemoon edit - Always-active body fluid regen
-/obj/item/organ/external/genital/testicles/on_mob_insert(mob/living/carbon/organ_owner, special = FALSE, movement_flags)
+/obj/item/organ/genital/testicles/on_mob_insert(mob/living/carbon/organ_owner, special = FALSE, movement_flags)
 	. = ..()
 	organ_owner.apply_status_effect(/datum/status_effect/body_fluid_regen/testes)
 // Bluemoon edit - Always-active body fluid regen
-/obj/item/organ/external/genital/testicles/on_mob_remove(mob/living/carbon/organ_owner, special = FALSE, movement_flags)
+/obj/item/organ/genital/testicles/on_mob_remove(mob/living/carbon/organ_owner, special = FALSE, movement_flags)
 	. = ..()
 	organ_owner.remove_status_effect(/datum/status_effect/body_fluid_regen/testes)
