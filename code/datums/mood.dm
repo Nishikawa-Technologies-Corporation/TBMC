@@ -582,58 +582,60 @@
 	switch(sanity)
 		if(SANITY_INSANE to SANITY_CRAZY)
 			set_insanity_effect(MAJOR_INSANITY_PEN)
-			// Bluemoon edit - Disable sanity movespeed modifier
+			// Bluemoon edit - Disable sanity modifiers
 			/*
 			mob_parent.add_movespeed_modifier(/datum/movespeed_modifier/sanity/insane)
-			*/
 			mob_parent.add_actionspeed_modifier(/datum/actionspeed_modifier/low_sanity)
+			*/
 			sanity_level = SANITY_LEVEL_INSANE
 		if(SANITY_CRAZY to SANITY_UNSTABLE)
 			set_insanity_effect(MINOR_INSANITY_PEN)
-			// Bluemoon edit - Disable sanity movespeed modifier
+			// Bluemoon edit - Disable sanity modifiers
 			/*
 			mob_parent.add_movespeed_modifier(/datum/movespeed_modifier/sanity/crazy)
-			*/
 			mob_parent.add_actionspeed_modifier(/datum/actionspeed_modifier/low_sanity)
+			*/
 			sanity_level = SANITY_LEVEL_CRAZY
 		if(SANITY_UNSTABLE to SANITY_DISTURBED)
 			set_insanity_effect(0)
-			// Bluemoon edit - Disable sanity movespeed modifier
+			// Bluemoon edit - Disable sanity modifiers
 			/*
 			mob_parent.add_movespeed_modifier(/datum/movespeed_modifier/sanity/disturbed)
-			*/
 			mob_parent.add_actionspeed_modifier(/datum/actionspeed_modifier/low_sanity)
+			*/
 			sanity_level = SANITY_LEVEL_UNSTABLE
 		if(SANITY_DISTURBED to SANITY_NEUTRAL)
 			set_insanity_effect(0)
-			// Bluemoon edit - Disable sanity movespeed modifier
+			// Bluemoon edit - Disable sanity modifiers
 			/*
 			mob_parent.remove_movespeed_modifier(MOVESPEED_ID_SANITY)
-			*/
 			mob_parent.remove_actionspeed_modifier(ACTIONSPEED_ID_SANITY)
+			*/
 			sanity_level = SANITY_LEVEL_DISTURBED
 		if(SANITY_NEUTRAL+1 to SANITY_GREAT+1) //shitty hack but +1 to prevent it from responding to super small differences
 			set_insanity_effect(0)
-			// Bluemoon edit - Disable sanity movespeed modifier
+			// Bluemoon edit - Disable sanity modifiers
 			/*
 			mob_parent.remove_movespeed_modifier(MOVESPEED_ID_SANITY)
-			*/
 			mob_parent.add_actionspeed_modifier(/datum/actionspeed_modifier/high_sanity)
+			*/
 			sanity_level = SANITY_LEVEL_NEUTRAL
 		if(SANITY_GREAT+1 to INFINITY)
 			set_insanity_effect(0)
-			// Bluemoon edit - Disable sanity movespeed modifier
+			// Bluemoon edit - Disable sanity modifiers
 			/*
 			mob_parent.remove_movespeed_modifier(MOVESPEED_ID_SANITY)
-			*/
 			mob_parent.add_actionspeed_modifier(/datum/actionspeed_modifier/high_sanity)
+			*/
 			sanity_level = SANITY_LEVEL_GREAT
 
+	/* Bluemoon edit - Disable sanity hallucinations
 	// Crazy or insane = add some uncommon hallucinations
 	if(sanity_level >= SANITY_LEVEL_CRAZY)
 		mob_parent.apply_status_effect(/datum/status_effect/hallucination/sanity)
 	else
 		mob_parent.remove_status_effect(/datum/status_effect/hallucination/sanity)
+	*/
 
 	update_mood_icon()
 
