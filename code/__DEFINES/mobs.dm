@@ -680,9 +680,6 @@
 #define HUMAN_HEIGHT_TALL 14
 #define HUMAN_HEIGHT_TALLER 16
 #define HUMAN_HEIGHT_TALLEST 18
-// Bluemoon edit - Quadrupedal crew
-// The torso height offset for quadrupedals
-#define HUMAN_HEIGHT_QUADRUPEDAL -6
 
 /// Assoc list of all heights, cast to strings, to """"tuples"""""
 /// The first """tuple""" index is the upper body offset
@@ -1054,3 +1051,11 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 /// Distance which you can see someone's ID card
 /// Short enough that you can inspect over tables (bartender checking age)
 #define ID_EXAMINE_DISTANCE 3
+
+GLOBAL_LIST_INIT(regal_rat_minion_commands, list(
+	/datum/pet_command/idle,
+	/datum/pet_command/free,
+	/datum/pet_command/protect_owner,
+	/datum/pet_command/follow,
+	/datum/pet_command/attack/mouse
+))

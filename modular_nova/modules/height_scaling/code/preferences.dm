@@ -51,10 +51,6 @@
 	if (HAS_TRAIT(target, TRAIT_DWARF)) // nuh uh. your height is set mf
 		return FALSE
 
-	// Bluemoon edit - Quadrupedal crew
-	if(target.quadruped)
-		value = clamp(value, HUMAN_HEIGHT_SHORT, HUMAN_HEIGHT_TALL)
-
 	for (var/quirk_id as anything in preferences?.all_quirks)
 		if (quirk_id in incompatable_quirk_ids)
 			return FALSE

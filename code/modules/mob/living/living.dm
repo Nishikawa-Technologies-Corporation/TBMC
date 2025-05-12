@@ -639,6 +639,7 @@
 
 // MOB PROCS //END
 
+/* NOVA EDIT REMOVAL BEGIN - Handled in [modular_nova/master_files/code/modules/sleep/code/mob/living/living.dm]
 /mob/living/proc/mob_sleep()
 	set name = "Sleep"
 	set category = "IC"
@@ -647,14 +648,12 @@
 		to_chat(src, span_warning("You are already sleeping!"))
 		return
 	else
-		// Bluemoon edit - Timed sleeping
 		var/duration = tgui_input_number(src, "How many minutes do you want to sleep for? Enter 0 to sleep indefinitely. Resist to wake up.", "Sleep: Duration", max_value = INFINITY, min_value = 0, default = 1)
 		if(isnum(duration))
 			SetSleeping(duration MINUTES, is_voluntary = TRUE)
-		/*
 		if(tgui_alert(usr, "You sure you want to sleep for a while?", "Sleep", list("Yes", "No")) == "Yes")
 			SetSleeping(400) //Short nap
-		*/
+NOVA EDIT REMOVAL END */
 
 
 /mob/proc/get_contents()
@@ -1255,10 +1254,12 @@
 	if(next_move > world.time)
 		return FALSE
 	if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
-		// Bluemoon edit - Allow waking from voluntary sleeping
+		// NOVA EDIT ADDITION BEGIN - Enhanced sleep
+		// Allows resisting if the sleep verb was used
 		var/datum/status_effect/incapacitating/sleeping/sleep_effect = IsSleeping()
-		if(sleep_effect)
-			return sleep_effect.voluntary
+		if(!isnull(sleep_effect) && sleep_effect.voluntary)
+			return TRUE
+		// NOVA EDIT ADDITION END
 		return FALSE
 	return TRUE
 
@@ -1275,12 +1276,12 @@
 	changeNext_move(CLICK_CD_RESIST)
 
 	SEND_SIGNAL(src, COMSIG_LIVING_RESIST, src)
-
-	// Bluemoon edit - Allow waking from voluntary sleeping
+	// NOVA EDIT ADDITION BEGIN - Enhanced sleep
+	// Allows resisting if the sleep verb was used
 	if(IsSleeping())
 		SetSleeping(0)
 		return
-
+	// NOVA EDIT ADDITION END
 	//resisting grabs (as if it helps anyone...)
 	if(!HAS_TRAIT(src, TRAIT_RESTRAINED) && pulledby)
 		log_combat(src, pulledby, "resisted grab")
@@ -1591,6 +1592,7 @@
 	return TRUE
 
 /mob/living/proc/update_stamina()
+	SEND_SIGNAL(src, COMSIG_LIVING_STAMINA_UPDATE)
 	update_stamina_hud()
 
 /mob/living/carbon/alien/update_stamina()
@@ -3171,4 +3173,5 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 
 /// Setter for changing a mob's blood type
 /mob/living/proc/set_blood_type(datum/blood_type/new_blood_type, update_cached_blood_dna_info)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_LIVING_CHANGED_BLOOD_TYPE, new_blood_type, update_cached_blood_dna_info)
