@@ -510,7 +510,7 @@
 	illustration = "disk_kit"
 
 /obj/item/storage/box/nif_ghost_box/PopulateContents()
-	new /obj/item/autosurgeon/organ/nif/ghost_role(src)
+	new /obj/item/autosurgeon/organ/nif(src) // Bluemoon edit - Add full NIF to ghostrole nif starter kit
 	new /obj/item/disk/nifsoft_uploader/shapeshifter(src)
 	new /obj/item/disk/nifsoft_uploader/summoner(src)
 	new /obj/item/disk/nifsoft_uploader/dorms(src)
