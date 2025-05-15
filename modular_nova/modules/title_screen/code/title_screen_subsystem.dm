@@ -60,6 +60,8 @@ SUBSYSTEM_DEF(title)
 		for(var/i in local_title_screens)
 			var/file_path = "[global.config.directory]/title_screens/images/[i]"
 			ASSERT(fexists(file_path))
+			to_chat(world, span_boldwarning("Loading title: [file_path]"))
+			log_admin("Loading title: [file_path]")
 			var/icon/title2use = new(fcopy_rsc(file_path))
 			title_screens += title2use
 
