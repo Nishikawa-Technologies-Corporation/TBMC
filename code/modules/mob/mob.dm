@@ -120,6 +120,9 @@
 
 	src.ckey = ckey(ckey)
 
+	// Bluemoon edit - Body swapper
+	client.register_body(src, ckey)
+
 /mob/serialize_list(list/options, list/semvers)
 	. = ..()
 
